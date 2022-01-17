@@ -6,13 +6,11 @@
 
 using namespace std;
 
-
 CodeWriter::CodeWriter(const char *fname)
 {
     out.open(fname);
     synCount = 0;
 }
-
 
 void CodeWriter::setFileName(string s)
 {
@@ -36,7 +34,7 @@ string CodeWriter::registerName(string segment, int index)
     if (segment == "temp")
         return "R" + to_string(5 + index);
 
-    return moduleName + "." + to_string(index); 
+    return moduleName + "." + to_string(index);
 }
 
 void CodeWriter::writePush(string seg, string index)
@@ -78,7 +76,7 @@ void CodeWriter::writePush(string seg, string index)
 }
 
 void CodeWriter::writePop(string seg, string index)
-{  
+{
     if (seg == "static" || seg == "temp" || seg == "pointer")
     {
 
@@ -157,7 +155,6 @@ void CodeWriter::writeArithmeticNeg()
     write("M=-M");
 }
 
-
 void CodeWriter::writeArithmeticAnd()
 {
     write("@SP // and");
@@ -178,33 +175,32 @@ void CodeWriter::writeArithmeticOr()
 
 void CodeWriter::writeArithmeticNot()
 {
-    
+
     write("@SP // not");
     write("A=M");
     write("A=A-1");
     write("M=!M");
 }
 
-
 void CodeWriter::writeArithmeticEq()
 {
     string label("JEQ_" + moduleName + "_" + to_string(synCount));
-	write("@SP // eq");
-	write("AM=M-1");
-	write("D=M");
-	write("@SP");
-	write("AM=M-1");
-	write("D=M-D");
-	write("@" + label);
-	write("D;JEQ");
-	write("D=1");
-	write("(" + label + ")");
-	write("D=D-1");
-	write("@SP");
-	write("A=M");
-	write("M=D");
-	write("@SP");
-	write("M=M+1");
+    write("@SP // eq");
+    write("AM=M-1");
+    write("D=M");
+    write("@SP");
+    write("AM=M-1");
+    write("D=M-D");
+    write("@" + label);
+    write("D;JEQ");
+    write("D=1");
+    write("(" + label + ")");
+    write("D=D-1");
+    write("@SP");
+    write("A=M");
+    write("M=D");
+    write("@SP");
+    write("M=M+1");
 
     synCount++;
 }
@@ -265,10 +261,11 @@ void CodeWriter::writeArithmeticLt()
     synCount++;
 }
 
-
-void CodeWriter::close(){
-	out.close();
+void CodeWriter::close()
+{
+    out.close();
 }
-void CodeWriter::write(string s) {
-	out << s << endl;
+void CodeWriter::write(string s)
+{
+    out << s << endl;
 }

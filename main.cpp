@@ -9,9 +9,6 @@
 
 using namespace std;
 
-
-
-
 int main(int argc, char **argv)
 {
 
@@ -21,14 +18,13 @@ int main(int argc, char **argv)
     string input = string(argv[1]);
     Parser *parser = new Parser(input.c_str());
     string output = input.substr(0, input.find_last_of(".")) + ".asm";
-    CodeWriter* codeWriter = new CodeWriter(output.c_str());
+    CodeWriter *codeWriter = new CodeWriter(output.c_str());
 
     string arg1, arg2;
 
     parser->advance();
     while (parser->hasMoreCommands())
     {
-       
 
         switch (parser->commandType())
         {
@@ -48,13 +44,13 @@ int main(int argc, char **argv)
             arg1 = parser->arg1();
             arg2 = parser->arg2();
             //cout << "pop " << arg1 << "-" << arg2 << endl;
-            codeWriter->writePop(arg1, arg2);  
+            codeWriter->writePop(arg1, arg2);
             break;
 
         default:
             break;
         }
-         parser->advance();
+        parser->advance();
     }
 
     return 0;

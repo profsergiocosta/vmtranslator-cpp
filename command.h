@@ -3,11 +3,7 @@
 
 #include <string>
 
-
-
-
 using namespace std;
-
 
 enum CommandType
 {
@@ -23,10 +19,8 @@ enum CommandType
     C_UNDEFINED
 };
 
-
 bool isArithmetic(string command);
 
 CommandType getCommandType(string command);
-
 
 #endif

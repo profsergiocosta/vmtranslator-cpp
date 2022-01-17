@@ -8,16 +8,15 @@
 
 using namespace std;
 
+class CodeWriter
+{
 
-class CodeWriter {
-	
 public:
-	CodeWriter (const char* fname) ;
-	void setFileName (string s) ;
-	void writeArithmetic (string command);
+	CodeWriter(const char *fname);
+	void setFileName(string s);
+	void writeArithmetic(string command);
 	void writePushPop(CommandType type, string seg, string index);
 	void close();
-	
 
 	void writePush(string seg, string index);
 	void writePop(string seg, string index);
@@ -30,15 +29,13 @@ public:
 	void writeArithmeticAnd();
 	void writeArithmeticOr();
 	void writeArithmeticNot();
-	
-private:
 
-	string registerName(string segment, int index=0);	
+private:
+	string registerName(string segment, int index = 0);
 	void write(string s);
 
 	int synCount;
 	ofstream out;
-    string moduleName;
-	
+	string moduleName;
 };
 #endif

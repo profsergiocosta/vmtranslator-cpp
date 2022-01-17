@@ -6,12 +6,7 @@
 #include <map>
 #include <string>
 
-
 using namespace std;
-
-
-
-
 
 set<string> arithmetic{
     "add",

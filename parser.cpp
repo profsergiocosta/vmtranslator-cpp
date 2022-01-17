@@ -11,7 +11,7 @@ Parser::Parser(const char *nome)
 
 bool Parser::hasMoreCommands()
 {
-    return !arq.eof() ;
+    return !arq.eof();
 }
 
 void Parser::advance()
