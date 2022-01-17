@@ -11,7 +11,7 @@ Parser::Parser(const char *nome)
 
 bool Parser::hasMoreCommands()
 {
-    return !arq.eof() && currentCommand != "EOF";
+    return !arq.eof() ;
 }
 
 void Parser::advance()
@@ -25,7 +25,6 @@ string Parser::nextToken()
     if (!arq.eof())
     {
         arq >> currentCommand;
-        if (arq.eof()) return "EOF";
 
         if (currentCommand.substr(0, 2) == "//")
         {
